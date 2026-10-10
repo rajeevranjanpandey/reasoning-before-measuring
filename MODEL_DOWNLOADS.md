@@ -1,8 +1,19 @@
 # Restoring local inference models
 
-The recorded scripts do not automatically download missing models. src/agents.py loads model files from the models directory; a missing GGUF file makes model initialisation fail. Restore the files before starting inference. The record-only checker does not need GGUF weights.
+The delivery launcher `run_with_models.py` downloads missing Qwen/Granite Q8_0 weights from the pinned official revisions below, verifies byte size and SHA-256, and then runs the selected unchanged research script. Valid existing weights are reused; invalid existing files are preserved and reported. Interrupted or invalid downloads are removed. Downloads happen before the experiment starts, outside recorded episode timings.
 
-Download exactly the pinned Q8_0 artefacts below into models/. An internet connection and approximately 4.53 GB of download/storage are required for both weights. Preserve provenance and result logs when removing weights. Fitted diagnostic predictors (.joblib) are different artefacts and are supplied in the release bundles.
+After extracting all three review archives into one directory, place this launcher in that directory and install the recorded dependencies from `requirements.txt` in a suitable Python environment. The recorded runtime used Apple Metal; other hardware/runtime combinations have not been verified here.
+
+```bash
+python run_with_models.py --model both
+python run_with_models.py --model qwen src/agents.py qwen pilot
+```
+
+The first command restores both weights without running an experiment. The second restores Qwen and starts the existing Qwen pilot script. Use `--model both` for scripts that use both models. Run `python reviewer_record_check.py` directly for record analysis: it needs Python and NumPy, and no model weights.
+
+The original scripts do not download weights when invoked directly. This launcher was added for delivery on 10 October 2026; it is not part of the recorded research code. Its download/caching/checksum behaviour was tested with small local files. No new multi-gigabyte download or inference experiment was executed during this delivery.
+
+Both weights require an internet connection and approximately 4.53 GB of download/storage, with additional space for inference and analysis. You can remove the two named GGUF files and restore them through the launcher later. Keep provenance, result logs, data snapshots and fitted `.joblib` predictors; these predictors are different artefacts and are supplied in the archives.
 
 ## Qwen
 
@@ -24,4 +35,3 @@ Expected SHA-256: 39068a5bcb15f10487a49426d617b1b0f38a624d7dbdefe5ff6f26de82d970
 
 Expected bytes: 2694120096
 
-On macOS/Linux, create models/ and download each URL with curl -L --fail --output models/FILENAME URL. Verify SHA-256 with shasum -a 256 models/FILENAME before starting an experiment. Replace FILENAME and URL with the exact values above. No new model inference or multi-gigabyte download was executed during this GitHub upload.

@@ -19,7 +19,9 @@ Original third-party full RData and GGUF downloads are not redistributed; obtain
 - `Code_And_Analysis.zip`: 144 smaller project files, preserving their original directories. Eleven larger logs/predictor files are available in the complete release package; the code archive is not a replacement for that package.
 - `manuscript_blocks.drawio`: editable equation/algorithm/architecture blocks.
 - `Supplementary_CSV_Data.zip`: four audited CSV tables.
-- `MODEL_DOWNLOADS.md`: instructions for restoring the two pinned inference models if local weights are removed.
+- `run_with_models.py`: downloads and verifies missing pinned weights before launching an unchanged research script.
+- `test_model_restore.py`: a small runnable check for download/caching/checksum behaviour.
+- `MODEL_DOWNLOADS.md`: exact model revisions, hashes and launcher instructions.
 
 ## Verified scope and remaining gates
 
