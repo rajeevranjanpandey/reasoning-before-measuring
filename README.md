@@ -1,4 +1,4 @@
-# Budgeted industrial sensor selection with small language models
+# Reasoning Before Measuring: Evaluating Small Language Models for Industrial Sensor Acquisition
 
 Research project for **Budgeted Industrial Sensor Selection with Small Language Models: A Paired Evaluation with Thinking Disabled**.
 
