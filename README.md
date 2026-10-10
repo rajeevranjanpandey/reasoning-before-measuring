@@ -1,6 +1,6 @@
 # Reasoning Before Measuring: Evaluating Small Language Models for Industrial Sensor Acquisition
 
-Research project for **Budgeted Industrial Sensor Selection with Small Language Models: A Paired Evaluation with Thinking Disabled**.
+Research project for **Reasoning Before Measuring: Evaluating Small Language Models for Industrial Sensor Acquisition**.
 
 This is an author-owned private working repository. It is not an anonymous reviewer link, a public archival deposit or a claim of journal acceptance. Anonymous reviewer access and a persistent archival identifier remain pending.
 
