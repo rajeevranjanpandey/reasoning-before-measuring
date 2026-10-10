@@ -1,30 +1,36 @@
 # Reasoning Before Measuring: Evaluating Small Language Models for Industrial Sensor Acquisition
 
-Research project for **Reasoning Before Measuring: Evaluating Small Language Models for Industrial Sensor Acquisition**.
+Research materials for the manuscript. Reviewer-facing access: https://anonymous.4open.science/r/reasoning-before-measuring-C66F/
 
-This is an author-owned private working repository. It is not an anonymous reviewer link, a public archival deposit or a claim of journal acceptance. Anonymous reviewer access and a persistent archival identifier remain pending.
+## Complete research package
 
-## Complete reproducibility package
+Download the whole anonymous repository as a ZIP and extract it locally. The `review_evidence/` directory contains 21 binary parts of the three original research archives. GitHub release attachments are not needed.
 
-Download all three `Review_Reproducibility_Part_*.zip` assets from the [v1.0 review-package release](https://github.com/rajeevranjanpandey/reasoning-before-measuring/releases/tag/v1.0-review-package). Extract all three into the same empty directory. These are independent ZIPs, not split volumes. Together they contain 155 files: research code, sample-320 snapshots, fitted predictors, frozen plans/amendments, model-download provenance, every analysed episode record, archived development checks, statistical outputs and supplemental verification text. PDF and LaTeX files are deliberately excluded, including inside archives.
+Run this from the extracted repository directory:
 
-`MANIFEST_SHA256.json` lists the 155 extracted files. The release also contains `RELEASE_SHA256.json`, which binds the downloaded ZIPs. Verify hashes before analysis. With Python and NumPy, run `python reviewer_record_check.py` from the extracted directory. It writes `review/episode_evidence_audit.json`; running the checker on the assembled delivery reproduced the audit byte-for-byte. No new model experiment was run during correction.
+```text
+python assemble_review_archives.py
+```
 
-Original third-party full RData and GGUF downloads are not redistributed; obtain them from the cited Dataverse/model records using the pinned versions and recorded hashes. Dependencies in `requirements.txt` describe the recorded experiment; timing and inference results can depend on hardware and runtime. Use a fresh extracted copy because original research scripts can write analysis outputs.
+The script reconstructs the three ZIPs in `review_archives/` and checks their SHA-256 hashes against `RELEASE_SHA256.json`. It preserves invalid existing archives and rejects corrupt or missing parts. Extract all three independent ZIPs into the same empty directory. Their combined contents are the 155 research files listed in `MANIFEST_SHA256.json`: research code, sample-320 snapshots, fitted predictors, frozen plans/amendments, model provenance, analysed episode records, archived development checks, statistical outputs and supplementary verification text.
 
-## Files in this repository
+With Python and NumPy installed, run `python reviewer_record_check.py` inside that assembled research directory. It produces `review/episode_evidence_audit.json`. The locally assembled delivery reproduced the recorded audit; no fresh model experiment was run. `EVIDENCE_PARTS_SHA256.json` records each repository part's size and hash.
 
-- `src/`: original research scripts for readable inspection.
-- `reviewer_record_check.py`: portable record audit and descriptive sign-flip re-analysis.
-- `Code_And_Analysis.zip`: 144 smaller project files, preserving their original directories. Eleven larger logs/predictor files are available in the complete release package; the code archive is not a replacement for that package.
-- `manuscript_blocks.drawio`: editable equation/algorithm/architecture blocks.
+## Model weights
+
+Full third-party RData and GGUF model downloads are not redistributed. The approved delivery launcher `run_with_models.py` restores missing weights from the pinned official revisions, checks byte sizes and SHA-256, then runs an unchanged research script. See `MODEL_DOWNLOADS.md`. Copy the launcher into the extracted research directory to use it with those scripts. Model downloads are outside the recorded episode timings.
+
+## Other files
+
+- `src/`: readable source snapshots of the recorded research scripts.
+- `Code_And_Analysis.zip`: the smaller 144-file project bundle plus its delivery README. It omits eleven larger evidence files and does not replace the complete package.
 - `Supplementary_CSV_Data.zip`: four audited CSV tables.
-- `run_with_models.py`: downloads and verifies missing pinned weights before launching an unchanged research script.
-- `test_model_restore.py`: a small runnable check for download/caching/checksum behavior.
-- `MODEL_DOWNLOADS.md`: exact model revisions, hashes and launcher instructions.
+- `manuscript_blocks.drawio`: editable equation, algorithm and architecture blocks.
+- `test_assemble_review_archives.py` and `test_model_restore.py`: small-file delivery checks.
+- `UPLOAD_SHA256.json`: hashes of the delivery files; scientific-file hashes remain in `MANIFEST_SHA256.json`.
 
-## Verified scope and remaining gates
+## Scope
 
-The paper reports 52,440 analyzed model/control episodes, excluding 80 final development checks and 140 earlier parser/runtime-check records. Qwen raw/assisted paths and predictions match across all 12,810 paired identities. The four final-study exact sign-flip checks are post hoc and conditional on sign-exchangeability; they do not change frozen contrasts, bootstrap intervals, or decisions.
+The paper reports 52,440 analysed model/control episodes, excluding 80 final development checks and 140 earlier parser/runtime checks. Qwen raw/assisted paths and predictions match across all 12,810 paired identities. Exact sign-flip checks are post hoc and conditional on sign-exchangeability; frozen contrasts, bootstrap intervals and decisions are unchanged.
 
-Final all-author approval, accurate historical preparation-tool model/version details, project licensing/archival terms and journal submission remain outstanding. No manuscript PDF, LaTeX source, author title page, competing-interest form, or internal correspondence is included here. Source scripts are retained as original research code; any historical document-generation scripts are not the current manuscript deliverable.
+Historical preparation-tool model/application versions were not recorded and are confirmed unrecoverable. This research deposit does not establish all-author approval, project licensing or journal submission. Manuscript PDFs, LaTeX sources, author documents, correspondence and model weights are excluded, including inside the reconstructed archives.
